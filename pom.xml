@@ -47,11 +47,11 @@
 
         <!--pdf转jpg -->
         <!-- https://mvnrepository.com/artifact/org.jpedal/jpedal-lgpl -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.jpedal</groupId>
             <artifactId>jpedal-lgpl</artifactId>
             <version>4.74b27</version>
-        </dependency>-->
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity -->
         <dependency>
