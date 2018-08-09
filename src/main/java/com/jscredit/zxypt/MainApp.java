@@ -1,6 +1,5 @@
 package com.jscredit.zxypt;
 
-import com.itextpdf.text.pdf.PdfWriter;
 import com.jscredit.zxypt.model.User;
 import com.jscredit.zxypt.utils.FreemarkerUtil;
 import com.jscredit.zxypt.utils.PdfGenerateUtil;
@@ -8,9 +7,6 @@ import com.jscredit.zxypt.utils.ProcessPDF;
 import com.jscredit.zxypt.utils.ResourceLoader;
 import net.sf.json.JSONObject;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
