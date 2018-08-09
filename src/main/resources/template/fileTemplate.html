@@ -1,0 +1,175 @@
+<html>
+<head>
+<title>${title}</title>
+<!-- link链接应该写文件服务器地址， 出于演示，这里用的localhost -->
+<link type="text/css" rel="stylesheet" href="${path1}" />
+    <style mce_bogus="1" type="text/css">
+        html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tfoot, thead, th, s { margin:0; padding:0; border:0; font-size:100%; vertical-align:baseline; font-style:normal; text-decoration:none;word-wrap: break-word;}
+
+        body {font-family: SimSun;
+            font-style:italic;
+            font-weight:bold;
+            font-size:12px;
+            background:none;margin-left: auto;margin-right: auto;padding-top: 50px;}
+        a { color:#000000; font-size:14px;line-height:26px; font-family:SimSun; text-decoration:none; }
+        a:hover { color:#000000; font-size:14px; line-height:26px; font-family:SimSun; text-decoration:none;}
+        .bt{color: #121212;font-size: 26px; line-height:80px;text-align: center;}
+        .A4 { margin: 0 auto;width: 680px;}
+
+
+        div.header-left {display: none}
+        div.header-right {display: none}
+        div.footer-left {display: none}
+        div.footer-right {display: none}
+        @media print {
+            div.header-left {
+                display: block;
+                position: running(header-left);
+                margin-top: 20px;
+            }
+            div.header-right {
+                display: block;
+                position: running(header-right);
+            }
+            div.footer-left {
+                display: block;
+                position: running(footer-left);
+            }
+            div.footer-right {
+                display: block;
+                position: running(footer-right);
+                content: counter(page);
+            }
+        }
+        @page {
+            @top-left{
+                content:element(header-left);
+                margin-top: 50px;
+            };
+            @top-right {
+                content: element(header-right)
+            };
+            @bottom-left {
+                content: element(footer-left)
+            };
+            @bottom-right {
+                content: counter(page);
+            };
+        }
+        /* flying-saucer-flying tr 跨页问题 */
+        table { page-break-inside:auto; -fs-table-paginate:paginate;border-spacing: 0;border: 1px; }
+        tr    { page-break-inside:avoid; page-break-after:auto;}
+        thead { display:table-header-group;margin-top: 100px;padding-top: 100px; }
+        tfoot { display:table-footer-group; }
+    </style>
+</head>
+
+<body>
+<div id="header">
+    <!--***************页眉_start*****************-->
+    <div id="header-left" class="header-left" align="left">
+        这里是页眉
+    </div>
+    <div id="header-right" class="header-right">
+        <!--***************页眉右侧*****************-->
+    </div>
+    <!--***************页眉_end*****************-->
+</div>
+<div id="footer">
+    <!--***************页脚_start*****************-->
+    <div id="footer-left" class="footer-left" align="left">
+        <!--这里是页脚-->
+    </div>
+    <div id="footer-right" class="footer-right" align="right">
+        <!--***************页脚右侧*****************-->
+    </div>
+    <!--***************页脚_endt*****************-->
+</div >
+	<h1>Just a blank page.</h1>
+	<!--<div style="page-break-before: always;">-->
+	<div id="div1">
+		<div align="center">
+			<h1>${title}</h1>
+			<!-- src链接应该写文件服务器地址， 出于演示，这里用的localhost -->
+			<img alt="加载中..." src="${path2}" />
+			<img alt="加载中..." src="${path2}" />
+			<img alt="加载中..." src="${path2}" />
+			<img alt="加载中..." src="${path2}" />
+			<img alt="加载中..." src="${path2}" />
+			<!--<div style="page-break-before: always;" ></div>-->
+		</div>
+		<div>
+            1、表格1
+		<table>
+			<caption>tewtetwet</caption>
+			<tr>
+				<td><b>Name</b></td>
+				<td><b>Age</b></td>
+				<td><b>Sex</b></td>
+			</tr>
+			<#list values.values2.userList as user>
+			<tr>
+				<td>${user.name}</td>
+				<td>${user.age}</td>
+				<td><#if user.sex = 1> male <#else> female </#if></td>
+			</tr>
+			</#list>
+		</table>
+		</div>
+
+        <div>
+            <table>
+                <caption>表格</caption>
+                <tr>
+                    <td><b>Name</b></td>
+                    <td><b>Age</b></td>
+                    <td><b>Sex</b></td>
+                </tr>
+                <#list values.values2.userList as user>
+                <tr>
+                    <td>${user.name}</td>
+                    <td>${user.age}</td>
+                    <td><#if user.sex = 1> male <#else> female </#if></td>
+                </tr>
+            </#list>
+            </table>
+        </div>
+
+		<a href="https://www.baidu.com/" target="_blank">百度</a>
+	</div>
+    <div>
+        <#--
+        !:指定缺失变量的默认值
+        ??:判断某个变量是否存在,返回boolean值
+        -->
+        <#if (a.b)??> <#--if后不用加$-->
+        不为空
+        <#else>
+        为空
+    </#if>
+    </div>
+
+    <div id="footer" style="">  Page <span id="pagenumber"/> of <span id="pagecount"/> </div>
+</body>
+<!--<script>
+    document.body.onload = addElement;
+
+    function addElement() {
+
+//创建一个div元素
+
+// 并且给他添加一些内容
+
+        var newDiv = document.createElement("div");
+
+        var newContent = document.createTextNode("Hi there and greetings!");
+
+        newDiv.appendChild(newContent);
+
+        var currentDiv = document.getElementById("div1");
+
+        document.body.insertBefore(newDiv, currentDiv);
+
+    }
+</script>-->
+</html>

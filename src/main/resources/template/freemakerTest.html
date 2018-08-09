@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>查询报告</title>
+  <style>
+    body {
+      font-family: SimSun;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .first-title {
+      font-size: 21px;
+      margin-bottom: 20px;
+    }
+
+    .secont-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .list {
+      border-spacing: 0;
+      border-collapse:collapse;
+    }
+
+    .no-data {
+      height: 50px;
+      text-align: center;
+    }
+
+    table {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    
+    th,td {
+      font-family: SimSun;
+      border: 1px solid #000;
+      height: 20px;
+      padding: 8px;
+      line-height: 1.5em;
+    }
+  </style>
+</head>
+
+<body>
+  <#list json as item>
+    <div>
+      <div class="first-title">${ item_index + 1 }、${ item.typeName }</div>
+      <#list item.types as listItem>
+        <div>
+          <div class="secont-title">${ item_index + 1 }.${ listItem_index + 1 }、${listItem.displayName}</div>
+          <table class="list" cellpadding="0">
+            <thead>
+              <tr>
+                <#list listItem.fields as thItem>
+                  <th>${ thItem.v }</th>
+                </#list>
+              </tr>
+            </thead>
+            <tbody>
+              <#if listItem.values?size != 0>
+                <#list listItem.values as trItem>
+                  <tr>
+                    <#list trItem as tdItem>
+                      <td>${ tdItem.v }</td>
+                    </#list>
+                  </tr>
+                </#list>
+              </#if>
+
+              <#if listItem.values?size == 0>
+                <tr>
+                  <td class="no-data" colspan="${ listItem.fields?size }">暂无数据</td>
+                </tr>
+              </#if>
+            </tbody>
+          </table>
+        </div>
+      </#list>
+    </div>
+  </#list>
+</body>
+</html>
