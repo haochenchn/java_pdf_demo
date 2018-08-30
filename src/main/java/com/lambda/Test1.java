@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
  * Created by CJ on 2018/8/29.
  */
 public class Test1 {
-
     public static void main(String[] args) {
         List<String> proNames = Arrays.asList(new String[]{"Ni","Hao","Lambda"});
 
